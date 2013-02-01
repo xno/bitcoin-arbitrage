@@ -72,10 +72,11 @@ def check_arbitrage_opportunity(json_data):
     filtered = []
     res = []
     for i in data:
-        #if i["currency"] == "EUR":
+        if i["currency"] == "EUR":
         #    print i["symbol"]
-        if i["symbol"] in ["mtgoxEUR", "intrsngEUR", "bc2EUR"]:
-            filtered.append(i)
+        #if i["symbol"] in ["mtgoxEUR", "intrsngEUR", "bc2EUR"]:
+			if not ( i["bid"] is None or i["ask"] is None):
+				filtered.append(i)
     print "ticker " + format_symbols(filtered)
     for i in filtered:
         for j in filtered:
